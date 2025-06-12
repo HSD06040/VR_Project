@@ -17,6 +17,6 @@ namespace EnumType
 
     public enum BGM
     {
-        
+        StarLightIsland
     }
 }

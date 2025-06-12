@@ -1,3 +1,4 @@
+using FMOD;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,11 @@ public class Manager : MonoBehaviour
     private static Manager instance;
 
     private static PlayerData playerData;
+    private static AudioManager audioManager;
 
     #region Managers
-    public static PlayerData PlayerData;
+    public static PlayerData PlayerData { get { return playerData; } }
+    public static AudioManager Audio { get { return audioManager; } }
     #endregion
 
     private void Awake() => Init();
