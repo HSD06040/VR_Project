@@ -1,4 +1,4 @@
-namespace Enum
+namespace EnumType
 {
     public enum FameLevel
     {
@@ -8,5 +8,15 @@ namespace Enum
         Popular,       // 유명함
         Celebrity,     // 셀럽 수준
         Legendary      // 전설적 존재
+    }
+
+    public enum SFX
+    {
+        
+    }
+
+    public enum BGM
+    {
+        
     }
 }
