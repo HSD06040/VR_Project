@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviour, ISavable
             string audioType = "mp3";
 
             FMODUnity.RuntimeManager.CoreSystem.createSound
-                (Path.Combine(Application.streamingAssetsPath, "BGMS", bgmFileName + "." + audioType), FMOD.MODE.CREATESAMPLE, out bgms[i]);
+                (Path.Combine(Application.streamingAssetsPath, "BGMS", bgmFileName + "." + audioType), FMOD.MODE.LOOP_NORMAL | FMOD.MODE._2D | FMOD.MODE.CREATESAMPLE, out bgms[i]);
         }
 
         for (int i = 0; i < count; i++)
