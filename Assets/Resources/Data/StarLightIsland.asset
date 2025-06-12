@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17998f47db85e0b4a87e60a95acff1ea, type: 3}
   m_Name: StarLightIsland
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 964bfec1645671043a0be8aca9f5ee4a, type: 3}
   musicName: StarLightIsland
-  isUnlocked: 0
+  isUnlocked: 1
   bgm: 0

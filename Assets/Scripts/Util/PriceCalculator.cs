@@ -12,7 +12,7 @@ public static class PriceCalculator
 
         total += (int)art.varietyScore;
 
-        total *= (int)Manager.PlayerData.fameLevel;
+        total *= (int)Manager.Data.fameLevel;
 
         return total;
     }

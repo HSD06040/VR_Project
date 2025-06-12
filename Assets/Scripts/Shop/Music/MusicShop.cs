@@ -6,10 +6,12 @@ public class MusicShop : MonoBehaviour
 {
     [SerializeField] private Transform musicBarParent;
     [SerializeField] private GameObject musicBarPrefab;
-    [SerializeField] private MusicData[] musicDatas;
+    private MusicData[] musicDatas;
     
-    private void Awake()
+    private void Start()
     {
+        musicDatas = Manager.Data.musicDatas;
+
         for (int i = 0; i < musicDatas.Length; i++)
         {
             MusicBar musicBar = Instantiate(musicBarPrefab, musicBarParent).GetComponent<MusicBar>();

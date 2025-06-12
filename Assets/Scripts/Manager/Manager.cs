@@ -7,12 +7,13 @@ public class Manager : MonoBehaviour
 {
     private static Manager instance;
 
-    private static PlayerData playerData;
+    private static DataManager dataManager;
     private static AudioManager audioManager;
-
+    private static UI_Manager uiManager;
     #region Managers
-    public static PlayerData PlayerData { get { return playerData; } }
+    public static DataManager Data { get { return dataManager; } }
     public static AudioManager Audio { get { return audioManager; } }
+    public static UI_Manager UI { get { return uiManager; } }
     #endregion
 
     private void Awake() => Init();
@@ -33,12 +34,14 @@ public class Manager : MonoBehaviour
     private T CreateMonoManager<T>() where T : MonoBehaviour
     {
         T instance = new GameObject(typeof(T).Name).AddComponent<T>();
-        instance.transform.SetParent(instance.transform, false);
+        instance.transform.parent = transform;
         return instance;
     }
 
     private void CreateManagers()
     {
-        playerData = CreateMonoManager<PlayerData>();
+        dataManager = CreateMonoManager<DataManager>();
+        audioManager = CreateMonoManager<AudioManager>();
+        uiManager = CreateMonoManager<UI_Manager>();
     }
 }

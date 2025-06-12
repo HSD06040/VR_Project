@@ -24,6 +24,23 @@ public class MusicBar : MonoBehaviour
     public void StartMusic()
     {
         if(musicData.isUnlocked)
+        {
             Manager.Audio.PlayBGM(musicData.bgm);
+        }
+        else
+        {
+            Manager.UI.PopupStart("정말 구매하시겠습니까?", Buy);                
+        }
+    }
+
+    private void Buy()
+    {
+        if (Manager.Data.RemoveGold(1000))
+        {
+            musicData.isUnlocked = true;
+            lockImage.gameObject.SetActive(false);
+        }
+        else
+            Debug.Log("돈이 부족합니다.");
     }
 }

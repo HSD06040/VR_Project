@@ -354,10 +354,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1387819016}
-    - targetCorrespondingSourceObject: {fileID: 7946161105132253424, guid: 69ade0a0311907f4cb75582dc99be394,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1387819022}
   m_SourcePrefab: {fileID: 100100000, guid: 69ade0a0311907f4cb75582dc99be394, type: 3}
 --- !u!1 &51229682
 GameObject:
@@ -1005,7 +1001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &587775673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1551,6 +1547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData:
+    musicUnlocks: 
     masterVolume: 1
     bgmVolume: 1
     sfxVolume: 1
@@ -2108,7 +2105,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 0
   m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2410,20 +2407,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &1387819022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387819010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 0}
 --- !u!1 &1460361329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,7 +2487,7 @@ Transform:
   m_GameObject: {fileID: 1460361329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.688, y: 1.625, z: 1.852}
+  m_LocalPosition: {x: 0.833, y: 0.959, z: 1.657}
   m_LocalScale: {x: 0.29948545, y: 0.05409438, z: 0.05763993}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3424,6 +3407,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669136942}
   m_CullTransparentMesh: 1
+--- !u!1 &1707922874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707922876}
+  - component: {fileID: 1707922875}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1707922875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707922874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cc5f483f95a8c43863259b01848a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1707922876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707922874}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7493759, y: 0.79005253, z: 7.2237134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1764466432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,7 +3518,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 0
   m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3767,7 +3794,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4552,8 +4579,6 @@ MonoBehaviour:
   musicBarParent: {fileID: 353717594}
   musicBarPrefab: {fileID: 1574654946801441184, guid: 9fad2e92b3202e148881f89a59a5d0b5,
     type: 3}
-  musicDatas:
-  - {fileID: 11400000, guid: edbb3a93f21fab24095aee32a23c7b25, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4567,3 +4592,4 @@ SceneRoots:
   - {fileID: 1314364810}
   - {fileID: 1932364598}
   - {fileID: 841617431}
+  - {fileID: 1707922876}

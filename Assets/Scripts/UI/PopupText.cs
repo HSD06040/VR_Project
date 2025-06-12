@@ -24,6 +24,7 @@ public class PopupText : MonoBehaviour
 
         popupText.text = text;
         yesButton.onClick.AddListener(yes);
+        yesButton.onClick.AddListener(ClosePopup);
 
         if(no != null )
         {

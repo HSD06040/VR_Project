@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnumType;
 
-public class PlayerData : MonoBehaviour
+public class DataManager : MonoBehaviour, ISavable
 {
     public FameLevel fameLevel;
     public Property<int> Gold { get; private set; } = new();
     public Property<int> TotalGold { get; private set; } = new();
     public Dictionary<string, bool> musicUnlockDic = new Dictionary<string, bool>();
-    //public Dictionary<Skybox, bool> skyboxUnlockDic = new();
+    public MusicData[] musicDatas;
+
+    private void Awake()
+    {
+        musicDatas = Resources.LoadAll<MusicData>("Data");
+        musicDatas[0].isUnlocked = true;
+    }
 
     public void AddGold(int amount)
     {
@@ -59,6 +65,24 @@ public class PlayerData : MonoBehaviour
                 if (totalGold >= 100000)
                     fameLevel = FameLevel.Legendary;
                 break;
+        }
+    }
+
+    public void Save(ref GameData data)
+    {        
+        for (int i = 0; i < musicDatas.Length; i++)
+        {
+            data.musicUnlocks[i] = musicDatas[i].isUnlocked;
+        }
+    }
+
+    public void Load(GameData data)
+    {
+        data.musicUnlocks = new bool[musicDatas.Length];
+
+        for (int i = 0; i < musicDatas.Length; i++)
+        {
+            musicDatas[i].isUnlocked = data.musicUnlocks[i];
         }
     }
 }

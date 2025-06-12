@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 [Serializable]
 public class GameData
 {
+    public bool[] musicUnlocks;
 
     public float masterVolume;
     public float bgmVolume;
