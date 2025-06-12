@@ -9,8 +9,8 @@ public class BaseColorPicker : MonoBehaviour, IPointerClickHandler, IDragHandler
 {
     private Image image;
     private RectTransform rt;
+    private Color baseColor;
 
-    public Color baseColor;
     public event Action<Color> OnColorChanged;   
 
     private void Awake()
@@ -49,5 +49,4 @@ public class BaseColorPicker : MonoBehaviour, IPointerClickHandler, IDragHandler
 
         OnColorChanged?.Invoke(baseColor);
     }
-
 }

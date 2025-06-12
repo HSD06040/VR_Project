@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class ColorPallet : MonoBehaviour, IPointerClickHandler, IDragHandler
 {
-    [SerializeField] private RenderTexture renderTexture;
-    [SerializeField] private RawImage image;
+    [SerializeField] private Image image;
     [SerializeField] private RectTransform rt;
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private BaseColorPicker colorPicker;
+    private Color color;
 
     [Header("UI References")]
     public Image colorPreview;
@@ -34,7 +34,7 @@ public class ColorPallet : MonoBehaviour, IPointerClickHandler, IDragHandler
 
     private void SetColor(Color color)
     {
-        image.material.SetColor("_BaseColor", color);
+        image.color = color;
         UpdateColor(lastEventData);
     }
 
@@ -59,32 +59,25 @@ public class ColorPallet : MonoBehaviour, IPointerClickHandler, IDragHandler
     private void UpdateColor(PointerEventData eventData)
     {
         Vector2 localCursor;
+        if (eventData == null) return;
+
         if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, eventData.position, eventData.pressEventCamera, out localCursor))
             return;
 
+        Texture2D tex = image.mainTexture as Texture2D;
         Rect rect = rt.rect;
 
         float x = (localCursor.x - rect.x) / rect.width;
         float y = (localCursor.y - rect.y) / rect.height;
 
-        Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
-        RenderTexture.active = renderTexture;
-        tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        tex.Apply();
-        RenderTexture.active = null;
+        int texX = Mathf.FloorToInt(x * tex.width);
+        int texY = Mathf.FloorToInt(y * tex.height);
 
-        int texX = Mathf.Clamp(Mathf.FloorToInt(x * tex.width), 0, tex.width - 1);
-        int texY = Mathf.Clamp(Mathf.FloorToInt(y * tex.height), 0, tex.height - 1);
+        color = tex.GetPixel(texX, texY) * image.color;
 
-        Color pickedColor = tex.GetPixel(texX, texY);
+        if (color == null) return;
 
-        if (pickedColor == null) return;
-
-        meshRenderer.material.color = pickedColor;
-        colorPreview.color = pickedColor;
-
-        lastEventData = eventData;
-        UpdateSliders(pickedColor);
-        Destroy(tex);
+        meshRenderer.material.SetColor("_BaseColor", color);
+        colorPreview.color = color;
     }
 }
