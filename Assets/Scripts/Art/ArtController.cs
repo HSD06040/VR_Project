@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ArtController : MonoBehaviour
 {
     [SerializeField] private RenderTexture artImage;
+    [SerializeField] private MeshRenderer artRenderer;
 
     private bool isDrawing;
     private float artTimeTaken;
@@ -15,6 +16,16 @@ public class ArtController : MonoBehaviour
         if (isDrawing)
             artTimeTaken += Time.deltaTime;
     }
+
+    public void CanvasReset()
+    {
+        RenderTexture activeRT = RenderTexture.active;
+        RenderTexture.active = artImage;
+
+        GL.Clear(true, true, Color.white);
+
+        RenderTexture.active = activeRT;
+    }    
 
     public void ArtSell()
     {
@@ -31,7 +42,6 @@ public class ArtController : MonoBehaviour
 
         PriceCalculator.CalculatePrice(artData);
     }
-
     private float AnalyzeColorComplexity(Texture2D texture)
     {
         HashSet<Color32> uniqueColors = new HashSet<Color32>();

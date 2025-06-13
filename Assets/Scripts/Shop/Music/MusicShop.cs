@@ -6,6 +6,7 @@ public class MusicShop : MonoBehaviour
 {
     [SerializeField] private Transform musicBarParent;
     [SerializeField] private GameObject musicBarPrefab;
+    [SerializeField] private Animator anim;
     private MusicData[] musicDatas;
     
     private void Start()
@@ -18,4 +19,14 @@ public class MusicShop : MonoBehaviour
             musicBar.SetMusicBar(musicDatas[i]);
         }
     }
+
+    public void OpenMusicShop()
+    {
+        anim.SetTrigger("In");
+    }
+    public void CloseMusicShop()
+    {
+        anim.SetTrigger("Out");
+    }
+    public void SetFalse() => gameObject.SetActive(false);
 }

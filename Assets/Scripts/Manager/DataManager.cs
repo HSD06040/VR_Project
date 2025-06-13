@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EnumType;
+using System;
 
 public class DataManager : MonoBehaviour, ISavable
 {
@@ -11,8 +12,10 @@ public class DataManager : MonoBehaviour, ISavable
     public Dictionary<string, bool> musicUnlockDic = new Dictionary<string, bool>();
     public MusicData[] musicDatas;
 
+    public event Action<string> OnFameLevelChanged;
+
     private void Awake()
-    {
+    {   
         musicDatas = Resources.LoadAll<MusicData>("Data");
         musicDatas[0].isUnlocked = true;
     }
@@ -66,6 +69,22 @@ public class DataManager : MonoBehaviour, ISavable
                     fameLevel = FameLevel.Legendary;
                 break;
         }
+
+        OnFameLevelChanged(GetFamusKorean());
+    }
+
+    public string GetFamusKorean()
+    {
+        return (fameLevel) switch
+        {
+            FameLevel.Unknown => "무 명",
+            FameLevel.Normal => "일 반",
+            FameLevel.Recognized => "알려짐",
+            FameLevel.Popular => "유 명",
+            FameLevel.Celebrity => "셀 럽",
+            FameLevel.Legendary => "역사에 남을",
+            _ => "없음"
+        };
     }
 
     public void Save(ref GameData data)

@@ -41,6 +41,6 @@ public class MusicBar : MonoBehaviour
             lockImage.gameObject.SetActive(false);
         }
         else
-            Debug.Log("돈이 부족합니다.");
+            Manager.UI.PopUpStringStart("돈이 부족합니다.");
     }
 }

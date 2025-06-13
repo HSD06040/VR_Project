@@ -43,7 +43,7 @@ public class PopupText : MonoBehaviour
 
     private void ClosePopup()
     {
-        anim.SetTrigger("Out");
+        anim.SetTrigger("Out");        
     }
 
     public void SetActivateFalse() => gameObject.SetActive(false);
