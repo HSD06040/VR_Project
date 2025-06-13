@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class GameData
 {
     public bool[] musicUnlocks;
+    public int gold;
 
     public float masterVolume;
     public float bgmVolume;
@@ -18,5 +19,6 @@ public class GameData
         masterVolume = 1;
         bgmVolume = 1;
         sfxVolume = 1;
+        gold = 1000;
     }
 }

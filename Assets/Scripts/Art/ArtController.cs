@@ -17,7 +17,17 @@ public class ArtController : MonoBehaviour
             artTimeTaken += Time.deltaTime;
     }
 
-    public void CanvasReset()
+    public void ArtReset()
+    {
+        Manager.UI.PopupStart("정말 그림을 초기화 하시겠습니까?", CanvasReset);
+    }
+
+    public void ArtSell()
+    {
+        Manager.UI.PopupStart("정말 그림을 판매 하시겠습니까?", Sell);
+    }
+
+    private void CanvasReset()
     {
         RenderTexture activeRT = RenderTexture.active;
         RenderTexture.active = artImage;
@@ -25,9 +35,9 @@ public class ArtController : MonoBehaviour
         GL.Clear(true, true, Color.white);
 
         RenderTexture.active = activeRT;
-    }    
+    }
 
-    public void ArtSell()
+    private void Sell()
     {
         ArtData artData = new ArtData
         {
@@ -41,7 +51,10 @@ public class ArtController : MonoBehaviour
         artTimeTaken = 0;
 
         PriceCalculator.CalculatePrice(artData);
+
+        CanvasReset();
     }
+
     private float AnalyzeColorComplexity(Texture2D texture)
     {
         HashSet<Color32> uniqueColors = new HashSet<Color32>();

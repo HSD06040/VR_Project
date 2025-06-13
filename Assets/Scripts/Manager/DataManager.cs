@@ -14,16 +14,28 @@ public class DataManager : MonoBehaviour, ISavable
 
     public event Action<string> OnFameLevelChanged;
 
+    private SaveManager saveManager;
+    private YieldInstruction delay = new WaitForSeconds(1f);
+
     private void Awake()
     {   
         musicDatas = Resources.LoadAll<MusicData>("Data");
         musicDatas[0].isUnlocked = true;
     }
 
+    private void Start()
+    {
+        saveManager = new GameObject("SaveManager").AddComponent<SaveManager>();
+        saveManager.transform.parent = transform;
+    }
+
     public void AddGold(int amount)
     {
         Gold.Value += amount;
         TotalGold.Value += amount;
+
+        Manager.UI.PopUpStringStart($"{amount}¿ø È¹µæ!");
+        TryFameLevelUp();
     }
     
     public bool RemoveGold(int amount)
@@ -37,11 +49,15 @@ public class DataManager : MonoBehaviour, ISavable
             return false;
     }
 
-    private void TryFameLevelUp()
+    private IEnumerator TryFameLevelUp()
     {
-        if (fameLevel == FameLevel.Legendary) return;
+        if (fameLevel == FameLevel.Legendary) yield break;
+
+        FameLevel temp = fameLevel;
 
         int totalGold = TotalGold.Value;
+
+        yield return delay;
 
         switch (fameLevel)
         {
@@ -70,7 +86,11 @@ public class DataManager : MonoBehaviour, ISavable
                 break;
         }
 
-        OnFameLevelChanged(GetFamusKorean());
+        if(temp != fameLevel)
+        {
+            OnFameLevelChanged(GetFamusKorean());
+            Manager.UI.PopUpStringStart($"ÁöÀ§ {GetFamusKorean()} ´Þ¼º!");
+        }
     }
 
     public string GetFamusKorean()
