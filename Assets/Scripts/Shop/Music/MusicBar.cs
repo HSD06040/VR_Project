@@ -16,7 +16,7 @@ public class MusicBar : MonoBehaviour
     {
         musicData = data;
 
-        musicName.text = data.name;
+        musicName.text = data.musicName;
         musicIcon.sprite = data.icon;
         lockImage.gameObject.SetActive(!data.isUnlocked);
     }
@@ -26,6 +26,7 @@ public class MusicBar : MonoBehaviour
         if(musicData.isUnlocked)
         {
             Manager.Audio.PlayBGM(musicData.bgm);
+            Manager.Audio.PlaySFX(SFX.Select);
         }
         else
         {

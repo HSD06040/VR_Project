@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Setting : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField] private Slider slider;
-
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -15,7 +15,8 @@ public class Setting : MonoBehaviour
 
     private void OnEnable()
     {
-        slider.value = Manager.Audio.bgmVolume;
+        bgmSlider.value = Manager.Audio.bgmVolume;
+        sfxSlider.value = Manager.Audio.sfxVolume;
     }
 
     public void Open()
@@ -35,5 +36,9 @@ public class Setting : MonoBehaviour
     {
         Manager.Audio.bgmVolume = volume;
         Manager.Audio.UpdateVolume();
+    }
+    public void SfxVolume(float volume)
+    {
+        Manager.Audio.sfxVolume = volume;
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 public class FileHandler
 {
     private string fullPath;
-    private bool isEncrype = true;
+    private bool isEncrype = false;
     private string codeWord = "HSD";
 
     public FileHandler(string dataPath, string dataFileName)

@@ -9,7 +9,6 @@ public class DataManager : MonoBehaviour, ISavable
     public FameLevel fameLevel;
     public Property<int> Gold { get; private set; } = new();
     public Property<int> TotalGold { get; private set; } = new();
-    public Dictionary<string, bool> musicUnlockDic = new Dictionary<string, bool>();
     public MusicData[] musicDatas;
 
     public event Action<string> OnFameLevelChanged;
@@ -102,27 +101,41 @@ public class DataManager : MonoBehaviour, ISavable
             FameLevel.Popular => "유 명",
             FameLevel.Celebrity => "셀 럽",
             FameLevel.Legendary => "역사에 남을",
-            _ => "없음"
+            _ => "무 명"
         };
     }
 
     public void Save(ref GameData data)
-    {        
-        for (int i = 0; i < musicDatas.Length; i++)
+    {
+        foreach (var music in musicDatas)
         {
-            data.musicUnlocks[i] = musicDatas[i].isUnlocked;
+            data.musicUnlockDic[music.musicName] = music.isUnlocked;
         }
+
+        data.gold = Gold.Value;
+        data.totalGold = TotalGold.Value;
+
+        data.fameLevel = fameLevel;
     }
 
     public void Load(GameData data)
     {
-        data.musicUnlocks = new bool[musicDatas.Length];
-
-        for (int i = 0; i < musicDatas.Length; i++)
+        foreach (var music in musicDatas)
         {
-            musicDatas[i].isUnlocked = data.musicUnlocks[i];
+            music.isUnlocked = data.musicUnlockDic[music.musicName];
         }
 
         musicDatas[0].isUnlocked = true;
+
+        Gold.Value = data.gold;
+        TotalGold.Value = data.totalGold;
+
+        fameLevel = data.fameLevel;
+
+        if (data.fameLevel == 0)
+        {
+            fameLevel = FameLevel.Unknown;
+            OnFameLevelChanged.Invoke(GetFamusKorean());
+        }
     }
 }

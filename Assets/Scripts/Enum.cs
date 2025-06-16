@@ -12,11 +12,11 @@ namespace EnumType
 
     public enum SFX
     {
-        
+        Close, Open, Select
     }
 
     public enum BGM
     {
-        StarLightIsland
+        StarLightIsland, Reminiscence, TownwithanOceanView, WeatheringWithYou
     }
 }

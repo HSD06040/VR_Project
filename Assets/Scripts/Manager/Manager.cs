@@ -1,4 +1,5 @@
 using FMOD;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class Manager : MonoBehaviour
     public static AudioManager Audio { get { return audioManager; } }
     public static UI_Manager UI { get { return uiManager; } }
     #endregion
+
+    public static event Action OnCreateManager;
 
     private void Awake() => Init();
 
@@ -43,5 +46,7 @@ public class Manager : MonoBehaviour
         dataManager = CreateMonoManager<DataManager>();
         audioManager = CreateMonoManager<AudioManager>();
         uiManager = CreateMonoManager<UI_Manager>();
+
+        OnCreateManager.Invoke();
     }
 }

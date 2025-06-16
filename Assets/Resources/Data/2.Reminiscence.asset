@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17998f47db85e0b4a87e60a95acff1ea, type: 3}
-  m_Name: StarLightIsland
+  m_Name: 2.Reminiscence
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 964bfec1645671043a0be8aca9f5ee4a, type: 3}
-  musicName: StarLightIsland
-  isUnlocked: 1
-  bgm: 0
+  icon: {fileID: 21300000, guid: a338b17e53cd55a4498392d02aecdd43, type: 3}
+  musicName: Reminiscence
+  isUnlocked: 0
+  bgm: 1

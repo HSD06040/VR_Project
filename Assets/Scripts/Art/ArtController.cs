@@ -22,6 +22,9 @@ public class ArtController : MonoBehaviour
 
     private void ResetCanvas()
     {
+        curRenderTexture = new RenderTexture(artImage.width, artImage.height, 0);
+        curRenderTexture.Create();
+
         Graphics.Blit(artImage, curRenderTexture);
         artRenderer.materials[0].SetTexture("_Cam_Texture", curRenderTexture);
         drawCam.targetTexture = curRenderTexture;
@@ -54,7 +57,7 @@ public class ArtController : MonoBehaviour
         {
             artName = artImage.name,
             artDescription = "",
-            varietyScore = AnalyzeColorComplexity(ConvertRenderTextureToTexture2D(artImage)),
+            varietyScore = 100,
             timeTaken = artTimeTaken
         };
 
@@ -64,34 +67,5 @@ public class ArtController : MonoBehaviour
         PriceCalculator.CalculatePrice(artData);
 
         CanvasReset();
-    }
-
-    private float AnalyzeColorComplexity(Texture2D texture)
-    {
-        HashSet<Color32> uniqueColors = new HashSet<Color32>();
-        Color32[] pixels = texture.GetPixels32();
-
-        foreach (var pixel in pixels)
-        {
-            if (pixel.a > 0)
-                uniqueColors.Add(pixel);
-        }
-
-        return Mathf.Clamp01(uniqueColors.Count / 10000f);
-    }
-    private Texture2D ConvertRenderTextureToTexture2D(RenderTexture renderTexture)
-    {
-        RenderTexture currentRT = RenderTexture.active;
-
-        RenderTexture.active = renderTexture;
-
-        Texture2D tex = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false);
-
-        tex.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
-        tex.Apply();
-
-        RenderTexture.active = currentRT;
-
-        return tex;
     }
 }

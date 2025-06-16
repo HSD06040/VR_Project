@@ -1,3 +1,4 @@
+using EnumType;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,15 +26,19 @@ public class PopupText : MonoBehaviour
         popupText.text = text;
         yesButton.onClick.AddListener(yes);
         yesButton.onClick.AddListener(ClosePopup);
+        yesButton.onClick.AddListener(PlaySFX);
 
         if(no != null )
         {
             noButton.onClick.AddListener(no);
             noButton.onClick.AddListener(ClosePopup);
+            noButton.onClick.AddListener(PlaySFX);
         }
         else
             noButton.onClick.AddListener(ClosePopup);
     }
+
+    private void PlaySFX() => Manager.Audio.PlaySFX(SFX.Select);
 
     private void OnDisable()
     {

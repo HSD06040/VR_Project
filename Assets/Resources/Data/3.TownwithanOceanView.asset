@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17998f47db85e0b4a87e60a95acff1ea, type: 3}
+  m_Name: 3.TownwithanOceanView
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 120e4e4c475c97c449d0014a2aa81694, type: 3}
+  musicName: "\uBC14\uB2E4\uAC00 \uBCF4\uC774\uB294 \uB9C8\uC744 (\uB9C8\uB140\uBC30\uB2EC\uBD80
+    \uD0A4\uD0A4 OST)"
+  isUnlocked: 0
+  bgm: 2

@@ -1,3 +1,4 @@
+using EnumType;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,14 @@ public class UI_Controller : MonoBehaviour
         {
             menu.gameObject.SetActive(true);
             menu.Open();
+            Manager.Audio.PlaySFX(SFX.Open);
         }
         else
         {
             menu.Close();
             setting.Close();
             musicShop.Close();
+            Manager.Audio.PlaySFX(SFX.Close);
         }
     }
 
@@ -29,10 +32,12 @@ public class UI_Controller : MonoBehaviour
         {
             setting.gameObject.SetActive(true);
             setting.Open();
+            Manager.Audio.PlaySFX(SFX.Open);
         }
         else
         {
             setting.Close();
+            Manager.Audio.PlaySFX(SFX.Close);
         }
     }
 
@@ -42,10 +47,12 @@ public class UI_Controller : MonoBehaviour
         {
             musicShop.gameObject.SetActive(true);
             musicShop.Open();
+            Manager.Audio.PlaySFX(SFX.Open);
         }
         else
         {
             musicShop.Close();
+            Manager.Audio.PlaySFX(SFX.Close);
         }
     }
 
