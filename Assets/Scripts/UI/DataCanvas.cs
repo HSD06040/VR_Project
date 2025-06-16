@@ -10,6 +10,8 @@ public class DataCanvas : MonoBehaviour
 
     private void OnEnable()
     {
+        goldText.text = Manager.Data.Gold.Value.ToString();
+        fameText.text = Manager.Data.GetFamusKorean();
         Manager.Data.Gold.AddEvent((int a) => goldText.text = a.ToString());
         Manager.Data.OnFameLevelChanged += ((string s) => fameText.text = s);
     }

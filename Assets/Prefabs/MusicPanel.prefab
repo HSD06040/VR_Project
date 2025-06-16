@@ -120,7 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7269410747207688498}
   m_HandleRect: {fileID: 7147924393413142593}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 8365063901102533631}
   - component: {fileID: 2082591497889978414}
   - component: {fileID: 3082349803132831076}
+  - component: {fileID: 3115127613537270292}
   m_Layer: 5
   m_Name: MusicPanel
   m_TagString: Untagged
@@ -538,7 +539,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7648443190813730415}
-  m_LocalRotation: {x: -0, y: -0.00010685413, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.00010467471, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -604,3 +605,25 @@ MonoBehaviour:
   musicBarParent: {fileID: 8334674580380448371}
   musicBarPrefab: {fileID: 1574654946801441184, guid: 9fad2e92b3202e148881f89a59a5d0b5,
     type: 3}
+  anim: {fileID: 3115127613537270292}
+--- !u!95 &3115127613537270292
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7648443190813730415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32f620cae9fdaf74386e80e010bd0ad3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

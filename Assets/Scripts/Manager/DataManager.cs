@@ -19,8 +19,7 @@ public class DataManager : MonoBehaviour, ISavable
 
     private void Awake()
     {   
-        musicDatas = Resources.LoadAll<MusicData>("Data");
-        musicDatas[0].isUnlocked = true;
+        musicDatas = Resources.LoadAll<MusicData>("Data");      
     }
 
     private void Start()
@@ -123,5 +122,7 @@ public class DataManager : MonoBehaviour, ISavable
         {
             musicDatas[i].isUnlocked = data.musicUnlocks[i];
         }
+
+        musicDatas[0].isUnlocked = true;
     }
 }
