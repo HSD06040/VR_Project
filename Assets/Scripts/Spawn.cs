@@ -7,8 +7,8 @@ public class Spawn : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Transform spawnPoint;
 
-    private void Start()
+    private void Update()
     {
-        player.transform.position = spawnPoint.position;   
+        player.transform.position = spawnPoint.position;         
     }
 }

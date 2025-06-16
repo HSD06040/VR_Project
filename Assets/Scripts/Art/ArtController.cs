@@ -1,22 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class ArtController : MonoBehaviour
 {
     [SerializeField] private RenderTexture artImage;
     [SerializeField] private MeshRenderer artRenderer;
+    [SerializeField] private Camera drawCam;
 
     private bool isDrawing;
     private float artTimeTaken;
+    private RenderTexture curRenderTexture;
+
+    private void Awake()
+    {
+        ResetCanvas();
+    }
+
+    private void ResetCanvas()
+    {
+        Graphics.Blit(artImage, curRenderTexture);
+        artRenderer.materials[0].SetTexture("_Cam_Texture", curRenderTexture);
+        drawCam.targetTexture = curRenderTexture;
+    }
 
     private void Update()
     {
         if (isDrawing)
             artTimeTaken += Time.deltaTime;
     }
-
+        
     public void ArtReset()
     {
         Manager.UI.PopupStart("정말 그림을 초기화 하시겠습니까?", CanvasReset);
@@ -29,12 +45,7 @@ public class ArtController : MonoBehaviour
 
     private void CanvasReset()
     {
-        RenderTexture activeRT = RenderTexture.active;
-        RenderTexture.active = artImage;
-
-        GL.Clear(true, true, Color.white);
-
-        RenderTexture.active = activeRT;
+        ResetCanvas();
     }
 
     private void Sell()

@@ -20,13 +20,14 @@ public class MusicShop : MonoBehaviour
         }
     }
 
-    public void OpenMusicShop()
+    public void Open()
     {
         anim.SetTrigger("In");
     }
-    public void CloseMusicShop()
+    public void Close()
     {
-        anim.SetTrigger("Out");
+        if (gameObject.activeSelf)
+            anim.SetTrigger("Out");
     }
     public void SetFalse() => gameObject.SetActive(false);
 }
