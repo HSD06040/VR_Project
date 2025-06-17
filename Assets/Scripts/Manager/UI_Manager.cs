@@ -18,7 +18,6 @@ public class UI_Manager : MonoBehaviour
     {
         Popup.gameObject.SetActive(true);
         Popup.SetupPopUp(text, yes, no);
-
     }
 
     public void PopUpStringStart(string text)

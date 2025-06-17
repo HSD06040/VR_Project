@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour, ISavable
     public Property<int> Gold { get; private set; } = new();
     public Property<int> TotalGold { get; private set; } = new();
     public MusicData[] musicDatas;
+    public bool isFirstPlaying;
 
     public event Action<string> OnFameLevelChanged;
 
@@ -116,13 +117,15 @@ public class DataManager : MonoBehaviour, ISavable
         data.totalGold = TotalGold.Value;
 
         data.fameLevel = fameLevel;
+        data.isFirstPlaying = isFirstPlaying;
     }
 
     public void Load(GameData data)
     {
         foreach (var music in musicDatas)
         {
-            music.isUnlocked = data.musicUnlockDic[music.musicName];
+            if (data.musicUnlockDic.TryGetValue(music.musicName, out bool value))
+                music.isUnlocked = value;
         }
 
         musicDatas[0].isUnlocked = true;
@@ -137,5 +140,7 @@ public class DataManager : MonoBehaviour, ISavable
             fameLevel = FameLevel.Unknown;
             OnFameLevelChanged.Invoke(GetFamusKorean());
         }
+
+        isFirstPlaying = data.isFirstPlaying;
     }
 }

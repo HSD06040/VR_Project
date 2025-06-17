@@ -7,11 +7,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [Serializable]
-public class GameData
+public partial class GameData
 {
     public SerializableDictionary<string, bool> musicUnlockDic;
 
     public FameLevel fameLevel;
+
+    public bool isFirstPlaying;
 
     public int gold;
     public int totalGold;
@@ -29,5 +31,6 @@ public class GameData
         fameLevel = FameLevel.Unknown;
         gold = 1000;
         totalGold = 0;
+        isFirstPlaying = true;
     }
 }

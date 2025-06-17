@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "M", menuName = "Data/MusicData")]
 [Serializable]

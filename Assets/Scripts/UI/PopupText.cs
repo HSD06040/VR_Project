@@ -28,7 +28,7 @@ public class PopupText : MonoBehaviour
         yesButton.onClick.AddListener(ClosePopup);
         yesButton.onClick.AddListener(PlaySFX);
 
-        if(no != null )
+        if(no != null)
         {
             noButton.onClick.AddListener(no);
             noButton.onClick.AddListener(ClosePopup);

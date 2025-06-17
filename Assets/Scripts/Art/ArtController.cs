@@ -26,6 +26,7 @@ public class ArtController : MonoBehaviour
         curRenderTexture.Create();
 
         Graphics.Blit(artImage, curRenderTexture);
+
         artRenderer.materials[0].SetTexture("_Cam_Texture", curRenderTexture);
         drawCam.targetTexture = curRenderTexture;
     }

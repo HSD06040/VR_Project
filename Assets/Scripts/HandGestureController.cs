@@ -13,6 +13,7 @@ public class HandGestureController : MonoBehaviour
     [SerializeField] private Mesh boxMesh;
     [SerializeField] private Mesh sphereMesh;
 
+    private bool isBox = false;
     private bool isAttached = false;
 
     private void Update()
@@ -26,10 +27,16 @@ public class HandGestureController : MonoBehaviour
 
     public void MeshChanged()
     {
-        if(markerFilter.mesh == boxMesh)        
+        if(isBox)
+        {
             markerFilter.mesh = sphereMesh;        
+            isBox = false;
+        }
         else
+        {
             markerFilter.mesh = boxMesh;
+            isBox = true;
+        }
     }
 
     public void OnGrabGesture()

@@ -17,6 +17,6 @@ namespace EnumType
 
     public enum BGM
     {
-        StarLightIsland, Reminiscence, TownwithanOceanView, WeatheringWithYou
+        StarLightIsland, Reminiscence, TownwithanOceanView, WeatheringWithYou, FlowerDance
     }
 }
